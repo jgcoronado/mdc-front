@@ -12,6 +12,7 @@
         <li><RouterLink to="/marcha">Marcha</RouterLink></li>
         <li><RouterLink to="/autor">Autor</RouterLink></li>
         <li><RouterLink to="/banda">Banda</RouterLink></li>
+        <li><RouterLink to="/disco">Disco</RouterLink></li>
       </ul>  
     </nav>
     <RouterView />

@@ -22,7 +22,7 @@ function goToAutorList(text) {
     type="text"
     v-model="text"
     @keyup.enter="goToAutorList(text)"
-    placeholder="Busar por nombre"
+    placeholder="Buscar autor por nombre"
   />
   <button
     class="btn"

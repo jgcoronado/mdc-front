@@ -22,7 +22,7 @@ function goToMarchaList(text) {
     type="text"
     v-model="text"
     @keyup.enter="goToMarchaList(text)"
-    placeholder="Busar por título"
+    placeholder="Buscar marcha por título"
   />
   <button
     class="btn"

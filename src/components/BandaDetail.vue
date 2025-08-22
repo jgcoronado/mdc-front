@@ -57,6 +57,27 @@ function goToAutor(id) {
         </tbody>
       </table>
     </div>
+    <div class="divider">Esta banda ha grabado {{ apiData.discosLength }} discos:</div>
+      <table class="table table-zebra">
+        <thead>
+          <tr>
+            <td>Nombre</td>
+            <td>Fecha</td>
+          </tr>
+        </thead>
+        <tbody v-for="d in apiData.discos">
+          <tr>
+            <td>
+              <a @click="goToDisco(d.ID_DISCO)">
+                {{ d.NOMBRE_CD }}
+              </a>
+            </td>
+            <td>
+              {{ d.FECHA_CD }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     <div class="divider">Esta banda ha estrenado {{ apiData.marchasLength }} marchas:</div>
       <table class="table table-zebra">
         <thead>

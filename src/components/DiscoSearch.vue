@@ -6,9 +6,9 @@ const router = useRouter()
 
 const text = ref('');
 
-function goToBandaList(text) {
+function goToDiscoList(text) {
   router.push({
-    name: 'bandaList',
+    name: 'discoList',
     params: {
       name: text,
     },
@@ -21,12 +21,12 @@ function goToBandaList(text) {
     class="input"
     type="text"
     v-model="text"
-    @keyup.enter="goToBandaList(text)"
-    placeholder="Buscar banda por nombre"
+    @keyup.enter="goToDiscoList(text)"
+    placeholder="Buscar disco por nombre"
   />
   <button
     class="btn"
-    @click="goToBandaList(text)"
+    @click="goToDiscoList(text)"
   >
   Buscar
   </button>
