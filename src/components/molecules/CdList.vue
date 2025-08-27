@@ -39,8 +39,4 @@ const props = defineProps({
 })
 
 const srcImg = ref(`../src/assets/cover/${props.disco.ID_DISCO}.png`);
-
-function getImageUrl() {
-  return new URL(`../../assets/cover/${props.id}`, import.meta.url)
-}
 </script>

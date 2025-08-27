@@ -5,7 +5,8 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const titulo = ref('');
-const fecha = ref('');
+const fechaIni = ref('');
+const fechaFin = ref('');
 const dedicatoria= ref('');
 const localidad= ref('');
 const provincia= ref('');
@@ -13,7 +14,8 @@ const provincia= ref('');
 function goToMarchaList() {
   const url = [];
   if(titulo.value) url.push(`titulo=${titulo.value}`);
-  if(fecha.value) url.push(`fecha=${fecha.value}`);
+  if(fechaIni.value) url.push(`fechaDesde=${fechaIni.value}`);
+  if(fechaFin.value) url.push(`fechaHasta=${fechaFin.value}`);
   if(dedicatoria.value) url.push(`dedicatoria=${dedicatoria.value}`);
   if(localidad.value) url.push(`localidad=${localidad.value}`);
   if(provincia.value) url.push(`provincia=${provincia.value}`);
@@ -29,52 +31,62 @@ function goToMarchaList() {
 </script>
 
 <template>
-  <div>
+  <fieldset
+    class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4"
+    @keyup.enter="goToMarchaList()"
+  >
+    <legend class="fieldset-legend">Buscador de marchas procesionales</legend>
+
+    <label class="label">Título</label>
     <input
       class="input"
       type="text"
       v-model="titulo"
-      placeholder="Buscar marcha por título"
+      placeholder="Ejemplo: Consuelo Gitano"
     />
-  </div>
-  <div>
-    <input
-      class="input"
-      type="text"
-      v-model="fecha"
-      placeholder="Buscar marcha por fecha"
-    />
-  </div>
-  <div>
+    <label class="label">Fecha</label>
+    <div class="join">
+      <input
+        class="input"
+        type="text"
+        v-model="fechaIni"
+        placeholder="Desde: 2017"
+      />
+      <input
+        class="input"
+        type="text"
+        v-model="fechaFin"
+        placeholder="Hasta: 2024"
+      />
+    </div>
+    <label class="label">Dedicatoria</label>
     <input
       class="input"
       type="text"
       v-model="dedicatoria"
-      placeholder="Buscar marcha por dedicatoria"
+      placeholder="Ejemplo: Hdad Cristo de la Corona"
     />
-  </div>
-  <div>
+    <label class="label">Localidad</label>
     <input
       class="input"
       type="text"
       v-model="localidad"
-      placeholder="Buscar marcha por localidad"
+      placeholder="Ejemplo: Écija"
     />
-  </div>
-  <div>
+    <label class="label">Provincia</label>
     <input
       class="input"
       type="text"
       v-model="provincia"
-      placeholder="Buscar marcha por provincia"
+      placeholder="Ejemplo: Almería"
     />
-  </div>
     <button
-    class="btn"
-    @keyup.enter="goToMarchaList()"
-    @click="goToMarchaList()"
-  >
-  Buscar
-  </button>
+      class="btn btn-neutral mt-4"
+      @keyup.enter="goToMarchaList()"
+      @click="goToMarchaList()"
+    >
+      Buscar
+    </button>
+  </fieldset>
 </template>
 
