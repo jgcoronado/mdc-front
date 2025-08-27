@@ -1,7 +1,9 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router';
+import CdList from './molecules/CdList.vue';
+import { goToDetail } from '@/services/goTo';
 
 const router = useRouter()
 const route = useRoute()
@@ -19,29 +21,12 @@ onMounted(async () => {
     console.error('Error fetching data:', error);
   });
 });
-function goToAutor(id) {
-  router.push({
-    name: 'autorDetail',
-    params: {
-      id,
-    },
-  });
-};
-function goToBanda(id) {
-  router.push({
-    name: 'bandaDetail',
-    params: {
-      id,
-    },
-  });
-};
-function goToDisco(id) {
-  router.push({
-    name: 'discoDetail',
-    params: {
-      id,
-    },
-  });
+function getDedicatoria(ded, loc) {
+  const isDed = ded != 0;
+  const isLoc = loc != 0 && loc !== undefined;
+  if(isDed && isLoc) return `${ded} (${loc})`;
+  else if (isDed) return `${ded}`;
+  else return '';
 };
 </script>
 
@@ -51,7 +36,7 @@ function goToDisco(id) {
     <div class="overflow-x-auto">
       <table class="table table-zebra">
         <tbody>
-          <tr>
+          <tr v-if="apiData.FECHA">
             <th>Fecha</th>
             <td>{{ apiData.FECHA }}</td>
           </tr>
@@ -59,20 +44,22 @@ function goToDisco(id) {
             <th>Autor</th>
             <td>
               <div v-for="a in apiData.AUTOR">
-                <a @click="goToAutor(a.autorId)">
+                <a class="hover:underline cursor-pointer" @click="goToDetail(router,'autor',a.autorId)">
                   {{ a.nombre }}
                 </a>
               </div>
             </td>
           </tr>
-          <tr>
+          <tr  v-if="apiData.DEDICATORIA">
             <th>Dedicatoria</th>
-            <td>{{ apiData.DEDICATORIA }}</td>
+            <td>
+              {{ getDedicatoria(apiData.DEDICATORIA, apiData.LOCALIDAD) }}
+            </td>
           </tr>
           <tr>
             <th>Estrenada por</th>
             <td>
-              <a @click="goToBanda(apiData.BANDA_ESTRENO)">
+              <a class="hover:underline cursor-pointer" @click="goToDetail(router,'banda',apiData.BANDA_ESTRENO)">
                 {{ apiData.BANDA }}
               </a>
             </td>
@@ -80,33 +67,13 @@ function goToDisco(id) {
         </tbody>
       </table>
     </div>
+    
     <div class="divider">Esta marcha se ha grabado en {{ apiData.discosLength }} discos:</div>
-      <table class="table table-zebra">
-        <thead>
-          <tr>
-            <td>Nombre</td>
-            <td>Banda</td>
-            <td>Fecha</td>
-          </tr>
-        </thead>
-        <tbody v-for="d in apiData.discos">
-          <tr>
-            <td>
-              <a @click="goToDisco(d.ID_DISCO)">
-                {{ d.NOMBRE_CD }}
-              </a>
-            </td>
-            <td>
-              <a @click="goToBanda(d.ID_BANDA)">
-                {{ d.BANDA }}
-              </a>
-            </td>
-            <td>
-              {{ d.FECHA_CD }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div v-for="d in apiData.discos">
+        <div>
+          <CdList v-bind:disco="d" />
+        </div>
+      </div>
     </div>
   <p v-else>Loading...</p>   
 </template>

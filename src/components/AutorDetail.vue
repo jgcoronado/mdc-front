@@ -56,7 +56,7 @@ function goToMarcha(id) {
         <tbody v-for="m in apiData.marchas">
           <tr>
             <td>
-              <a @click="goToMarcha(m.ID_MARCHA)">
+              <a class="hover:underline cursor-pointer" @click="goToMarcha(m.ID_MARCHA)">
                 {{ m.TITULO }}
               </a>
             </td>

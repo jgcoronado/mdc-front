@@ -1,7 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios';
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router';
+import { goToDetail } from '@/services/goTo';
 
 const router = useRouter()
 const route = useRoute()
@@ -18,14 +19,6 @@ onMounted( async () => {
     console.error('Error fetching data:', error);
   });
 });
-function goToAutor(id) {
-  router.push({
-    name: 'autorDetail',
-    params: {
-      id,
-    },
-  });
-};
 </script>
 
 <template>
@@ -39,7 +32,7 @@ function goToAutor(id) {
       <tbody v-for="autor in apiData.data">
         <tr>
           <td>
-            <a @click="goToAutor(autor.ID_AUTOR)">
+            <a class="hover:underline cursor-pointer" @click="goToDetail(router, 'autor', autor.ID_AUTOR)">
               {{ autor.AUTOR }}
             </a>
           </td>

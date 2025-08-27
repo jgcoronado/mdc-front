@@ -1,7 +1,7 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router';
 
 const router = useRouter()
 const route = useRoute()
@@ -78,13 +78,13 @@ function goToBanda(id) {
         <tbody v-for="m in apiData.marchas">
           <tr>
             <td>
-              <a @click="goToMarcha(m.ID_MARCHA)">
+              <a class="hover:underline cursor-pointer" @click="goToMarcha(m.ID_MARCHA)">
                 {{ m.TITULO }}
               </a>
             </td>
           <td>
             <div v-for="a in m.AUTOR">
-              <a @click="goToAutor(a.autorId)">
+              <a class="hover:underline cursor-pointer" @click="goToAutor(a.autorId)">
                 {{ a.nombre }}
               </a>
             </div>

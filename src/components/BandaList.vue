@@ -1,7 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios';
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router';
+import { goToDetail } from '@/services/goTo';
 
 const router = useRouter()
 const route = useRoute()
@@ -23,13 +24,12 @@ function showDate(fund,ext) {
   const extRes = (ext == null) || (ext === 0) ? '' : ` - ${ext}`;
   return `${funRes}${extRes}`;
 }
-function goToBanda(id) {
-  router.push({
-    name: 'bandaDetail',
-    params: {
-      id,
-    },
-  });
+function showLocalidad(loc, prov) {
+  const isLoc = loc != 0;
+  const isProv = prov != 0 && prov !== undefined && prov != null;
+  if(isLoc && isProv) return `${loc} (${prov})`;
+  else if (isLoc) return `${loc}`;
+  else return '';
 };
 </script>
 
@@ -46,11 +46,13 @@ function goToBanda(id) {
       <tbody v-for="b in apiData.data">
         <tr>
           <td>
-            <a @click="goToBanda(b.ID_BANDA)">
+            <a class="hover:underline cursor-pointer" @click="goToDetail(router, 'banda', b.ID_BANDA)">
               {{ b.NOMBRE_COMPLETO }}
             </a>
           </td>
-          <td>{{ b.LOCALIDAD }} ({{ b.PROVINCIA }})</td>
+          <td>
+            {{ showLocalidad(b.LOCALIDAD, b.PROVINCIA) }}
+          </td>
           <td>
             {{ showDate(b.FECHA_FUND,b.FECHA_EXT) }}
           </td>

@@ -2,15 +2,20 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router'
+import { goToDetail } from '@/services/goTo';
 
-const router = useRouter()
+const r = useRouter()
 const route = useRoute()
 const apiData = ref('');
-const marchaDetailUrl = 'http://localhost:3000/marcha/';
+
+const query = defineProps({
+    titulo: String,
+    fecha: String
+});
 
 onMounted( async () => {
-  const titulo = route.params.name;
-  const apiUrl = `http://localhost:3000/marcha/search/${titulo}`; // Replace with your API endpoint URL
+  const { query } = route.params;
+  const apiUrl = `http://localhost:3000/marcha/search?${query}`; // Replace with your API endpoint URL
   await axios.get(apiUrl)
     .then((response) => {
     apiData.value = response.data;
@@ -19,22 +24,6 @@ onMounted( async () => {
     console.error('Error fetching data:', error);
   });
 });
-function goToMarcha(id) {
-  router.push({
-    name: 'marchaDetail',
-    params: {
-      id,
-    },
-  });
-};
-function goToAutor(id) {
-  router.push({
-    name: 'autorDetail',
-    params: {
-      id,
-    },
-  });
-};
 </script>
 
 <template>
@@ -50,13 +39,13 @@ function goToAutor(id) {
       <tbody v-for="marcha in apiData.data">
         <tr>
           <td>
-            <a @click="goToMarcha(marcha.ID_MARCHA)">
+            <a class="hover:underline cursor-pointer" @click="goToDetail(r, 'marcha', marcha.ID_MARCHA)">
               {{ marcha.TITULO }}
             </a>
           </td>
           <td>
             <div v-for="a in marcha.AUTOR">
-              <a @click="goToAutor(a.autorId)">
+              <a class="hover:underline cursor-pointer" @click="goToDetail(r,'autor',a.autorId)">
                 {{ a.nombre }}
               </a>
             </div>

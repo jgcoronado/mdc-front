@@ -2,6 +2,8 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router'
+import CdList from './molecules/CdList.vue';
+import { goToDetail } from '@/services/goTo';
 
 const router = useRouter();
 const route = useRoute()
@@ -9,7 +11,7 @@ const apiData = ref('');
 
 onMounted(async () => {
   const id = route.params.id;
-  const apiUrl = `http://localhost:3000/banda/${id}`; // Replace with your API endpoint URL
+  const apiUrl = `http://localhost:3000/banda/${id}`;
   
   axios.get(apiUrl)
     .then((response) => {
@@ -19,26 +21,12 @@ onMounted(async () => {
     console.error('Error fetching data:', error);
   });
 });
-function goToMarcha(id) {
-  router.push({
-    name: 'marchaDetail',
-    params: {
-      id,
-    },
-  });
-};
-function goToAutor(id) {
-  router.push({
-    name: 'autorDetail',
-    params: {
-      id,
-    },
-  });
-};
 </script>
 
 <template>
-    <div class="card bg-accent-content rounded-box grid h-20 place-items-center text-3xl">{{ apiData.NOMBRE_BREVE }}</div>
+    <div class="card bg-accent-content rounded-box grid h-20 place-items-center text-3xl">
+      {{ apiData.NOMBRE_BREVE }}
+    </div>
     <div class="overflow-x-auto">
       <table class="table table-zebra">
         <tbody>
@@ -58,26 +46,11 @@ function goToAutor(id) {
       </table>
     </div>
     <div class="divider">Esta banda ha grabado {{ apiData.discosLength }} discos:</div>
-      <table class="table table-zebra">
-        <thead>
-          <tr>
-            <td>Nombre</td>
-            <td>Fecha</td>
-          </tr>
-        </thead>
-        <tbody v-for="d in apiData.discos">
-          <tr>
-            <td>
-              <a @click="goToDisco(d.ID_DISCO)">
-                {{ d.NOMBRE_CD }}
-              </a>
-            </td>
-            <td>
-              {{ d.FECHA_CD }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div v-for="d in apiData.discos">
+        <div>
+          <CdList v-bind:disco="d" />
+        </div>
+      </div>
     <div class="divider">Esta banda ha estrenado {{ apiData.marchasLength }} marchas:</div>
       <table class="table table-zebra">
         <thead>
@@ -90,13 +63,19 @@ function goToAutor(id) {
           <tr>
             <td>{{ m.FECHA }}</td>
             <td>
-              <a @click="goToMarcha(m.ID_MARCHA)">
+              <a
+                class="hover:underline cursor-pointer"
+                @click="goToDetail(router, 'marcha', m.ID_MARCHA)"
+              >
                 {{ m.TITULO }}
               </a>
             </td>
             <td>
               <div v-for="a in m.AUTOR">
-                <a @click="goToAutor(a.autorId)">
+                <a
+                  class="hover:underline cursor-pointer"
+                  @click="goToDetail(router, 'autor', a.autorId)"
+                >
                   {{ a.nombre }}
                 </a>
               </div>
