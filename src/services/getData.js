@@ -3,7 +3,6 @@ import { ref } from 'vue'
 
 const apiData = ref('');
 
-
 export async function getApiData(route) {
   const id = route.params.id;
   const apiUrl = `http://localhost:3000/banda/${id}`;

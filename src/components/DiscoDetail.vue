@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router';
+import { goToDetail } from '@/services/goTo';
 
 const router = useRouter()
 const route = useRoute()
@@ -19,35 +20,15 @@ onMounted(async () => {
     console.error('Error fetching data:', error);
   });
 });
-function goToMarcha(id) {
-  router.push({
-    name: 'marchaDetail',
-    params: {
-      id,
-    },
-  });
-};
-function goToAutor(id) {
-  router.push({
-    name: 'autorDetail',
-    params: {
-      id,
-    },
-  });
-};
-function goToBanda(id) {
-  router.push({
-    name: 'bandaDetail',
-    params: {
-      id,
-    },
-  });
-};
 </script>
 
 <template>
   <div v-if="apiData">
-    <div class="card bg-accent-content rounded-box grid h-20 place-items-center text-3xl">{{ apiData.NOMBRE_CD }}</div>
+    <div
+      class="card bg-accent-content rounded-box grid h-20 place-items-center text-3xl"
+    >
+      {{ apiData.NOMBRE_CD }}
+    </div>
     <div class="overflow-x-auto">
       <table class="table table-zebra">
         <tbody>
@@ -58,7 +39,10 @@ function goToBanda(id) {
           <tr>
             <th>Banda</th>
             <td>
-              <a @click="goToBanda(apiData.ID_BANDA)">
+              <a
+                class="hover:underline cursor-pointer"
+                @click="goToDetail(router, 'banda', apiData.ID_BANDA)"
+              >
                 {{ apiData.BANDA }}
               </a>
             </td>
@@ -78,13 +62,19 @@ function goToBanda(id) {
         <tbody v-for="m in apiData.marchas">
           <tr>
             <td>
-              <a class="hover:underline cursor-pointer" @click="goToMarcha(m.ID_MARCHA)">
+              <a 
+                class="hover:underline cursor-pointer"
+                @click="goToDetail(router, 'marcha', m.ID_MARCHA)"
+              >
                 {{ m.TITULO }}
               </a>
             </td>
           <td>
             <div v-for="a in m.AUTOR">
-              <a class="hover:underline cursor-pointer" @click="goToAutor(a.autorId)">
+              <a
+                class="hover:underline cursor-pointer"
+                @click="goToDetail(router, 'autor', a.autorId)"
+              >
                 {{ a.nombre }}
               </a>
             </div>

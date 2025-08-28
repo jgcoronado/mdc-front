@@ -10,10 +10,13 @@
       <a class="hover:underline cursor-pointer" @click="goToDetail($router, 'disco',disco.ID_DISCO)">
         {{ disco.NOMBRE_CD}}
       </a>
-      <div class="text-sm font-semibold opacity-60 indent-4">
-        <a class=" hover:underline cursor-pointer" underline @click="goToDetail($router, 'banda',disco.ID_BANDA)">
+      <div v-if="disco.BANDA" class="text-sm font-semibold opacity-60 indent-4">
+        <a class="hover:underline cursor-pointer" @click="goToDetail($router, 'banda',disco.ID_BANDA)">
           {{disco.BANDA}}
         </a>
+      </div>
+      <div v-else class="text-sm font-semibold opacity-60 indent-4">
+        {{ disco.PISTAS }} marchas
       </div>
     </div>
     <div>
@@ -27,14 +30,14 @@
 import { ref } from 'vue';
 import { goToDetail } from '@/services/goTo';
 
-
 const props = defineProps({
   disco: {
     ID_DISCO: String,
     NOMBRE_CD: String,
     FECHA_CD: Number,
     ID_BANDA: Number,
-    BANDA: String
+    BANDA: String,
+    PISTAS: Number
   }
 })
 

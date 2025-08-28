@@ -49,7 +49,7 @@
     <li>
       <hr />
       <div class="timeline-start">
-        {{ isExtint ? apiData.FECHA_EXT : 'Hoy' }}
+        {{ isExtint ? isExtint : 'Hoy' }}
       </div>
       <div class="timeline-middle">
         <svg
@@ -86,6 +86,8 @@ const props = defineProps({
 const isExtint = computed(() => {
   const sizeBands = props.apiData.timeline.length -1;
   const lastBand = props.apiData.timeline[sizeBands];
+  console.log("🚀 ~ lastBand:", lastBand)
+  console.log("🚀 ~ lastBand.FECHA_EXT:", lastBand.FECHA_EXT)
   return lastBand.FECHA_EXT;
 });
 </script>
