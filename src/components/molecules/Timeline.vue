@@ -86,7 +86,6 @@ const props = defineProps({
 const isExtint = computed(() => {
   const sizeBands = props.apiData.timeline.length -1;
   const lastBand = props.apiData.timeline[sizeBands];
-  console.log("🚀 ~ lastBand:", lastBand.FECHA_EXT)
   return lastBand.FECHA_EXT;
 });
 </script>
