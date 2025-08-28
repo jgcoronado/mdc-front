@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router'
 import CdList from './molecules/CdList.vue';
+import Timeline from './molecules/Timeline.vue';
 import { goToDetail } from '@/services/goTo';
 
 const router = useRouter();
@@ -21,6 +22,16 @@ onMounted(async () => {
     console.error('Error fetching data:', error);
   });
 });
+
+function newBandaDetail(page,id) {
+  router.push({
+      name: `${page}Detail`,
+      params: {
+        id,
+      },
+    });
+  window.location.reload();
+} 
 </script>
 
 <template>
@@ -45,6 +56,10 @@ onMounted(async () => {
         </tbody>
       </table>
     </div>
+    <div class="grid justify-items-center">  
+      <Timeline v-bind:apiData />
+    </div>
+
     <div class="divider">Esta banda ha grabado {{ apiData.discosLength }} discos:</div>
       <div v-for="d in apiData.discos">
         <div>

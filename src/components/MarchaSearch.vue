@@ -49,14 +49,18 @@ function goToMarchaList() {
       <input
         class="input"
         type="text"
+        maxlength="4"
+        size="4"
         v-model="fechaIni"
-        placeholder="Desde: 2017"
+        placeholder="Desde: 1993"
       />
       <input
         class="input"
         type="text"
+        maxlength="4"
+        size="4"
         v-model="fechaFin"
-        placeholder="Hasta: 2024"
+        placeholder="Hasta: 2021"
       />
     </div>
     <label class="label">Dedicatoria</label>
@@ -71,7 +75,7 @@ function goToMarchaList() {
       class="input"
       type="text"
       v-model="localidad"
-      placeholder="Ejemplo: Écija"
+      placeholder="Ejemplo: Osuna"
     />
     <label class="label">Provincia</label>
     <input
