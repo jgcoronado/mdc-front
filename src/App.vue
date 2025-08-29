@@ -16,7 +16,7 @@
   </nav>
   <body class="grid justify-items-center">    
     <div>
-      <RouterView :key="$route.fullPath" />
+      <RouterView />
     </div>
   </body>
   <footer>

@@ -1,26 +1,18 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router';
 import CdList from './molecules/CdList.vue';
 import { goToDetail } from '@/services/goTo';
+import { getDetailData } from '@/services/getData';
 
 const router = useRouter()
 const route = useRoute()
 const apiData = ref('');
 
 onMounted(async () => {
-  const { id } = route.params;
-  const apiUrl = `http://localhost:3000/marcha/${id}`; // Replace with your API endpoint URL
-  
-  axios.get(apiUrl)
-    .then((response) => {
-    apiData.value = response.data;
-    })
-    .catch((error) => {
-    console.error('Error fetching data:', error);
-  });
+  apiData.value = await getDetailData('marcha',route);
 });
+
 function getDedicatoria(ded, loc) {
   const isDed = ded != 0;
   const isLoc = loc != 0 && loc !== undefined;

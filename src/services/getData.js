@@ -3,17 +3,10 @@ import { ref } from 'vue'
 
 const apiData = ref('');
 
-export async function getApiData(route) {
-  const id = route.params.id;
-  const apiUrl = `http://localhost:3000/banda/${id}`;
+export async function getDetailData(page,route) {
+  const { id } = route.params;
+  const apiUrl = `http://localhost:3000/${page}/${id}`;
   
-  await axios.get(apiUrl)
-    .then((response) => {
-    console.log("🚀 ~ getApiData ~ response:", response.data)
-    return response;
-    })
-    .catch((error) => {
-    console.error('Error fetching data:', error);
-    return error;
-  });
+  const res = await axios.get(apiUrl);
+  return res.data;
 };

@@ -5,33 +5,15 @@ import { useRouter, useRoute } from 'vue-router'
 import CdList from './molecules/CdList.vue';
 import Timeline from './molecules/Timeline.vue';
 import { goToDetail } from '@/services/goTo';
+import { getDetailData } from '@/services/getData';
 
 const router = useRouter();
 const route = useRoute()
 const apiData = ref('');
 
 onMounted(async () => {
-  const id = route.params.id;
-  const apiUrl = `http://localhost:3000/banda/${id}`;
-  
-  axios.get(apiUrl)
-    .then((response) => {
-    apiData.value = response.data;
-    })
-    .catch((error) => {
-    console.error('Error fetching data:', error);
-  });
+  apiData.value = await getDetailData('banda',route);
 });
-
-function newBandaDetail(page,id) {
-  router.push({
-      name: `${page}Detail`,
-      params: {
-        id,
-      },
-    });
-  window.location.reload();
-} 
 </script>
 
 <template>

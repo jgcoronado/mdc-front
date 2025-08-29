@@ -8,11 +8,6 @@ const r = useRouter()
 const route = useRoute()
 const apiData = ref('');
 
-const query = defineProps({
-    titulo: String,
-    fecha: String
-});
-
 onMounted( async () => {
   const { query } = route.params;
   const apiUrl = `http://localhost:3000/marcha/search?${query}`; // Replace with your API endpoint URL

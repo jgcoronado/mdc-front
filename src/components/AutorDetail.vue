@@ -1,24 +1,16 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router'
+import { getDetailData } from '@/services/getData';
 
 const router = useRouter();
 const route = useRoute()
 const apiData = ref('');
 
 onMounted(async () => {
-  const id = route.params.id;
-  const apiUrl = `http://localhost:3000/autor/${id}`; // Replace with your API endpoint URL
-  
-  axios.get(apiUrl)
-    .then((response) => {
-    apiData.value = response.data;
-    })
-    .catch((error) => {
-    console.error('Error fetching data:', error);
-  });
+  apiData.value = await getDetailData('autor', route);
 });
+
 function goToMarcha(id) {
   router.push({
     name: 'marchaDetail',

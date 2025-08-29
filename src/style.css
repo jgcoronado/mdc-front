@@ -2,3 +2,6 @@
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
 }
+@utility tableList {
+  @apply overflow-x-auto rounded-box border border-base-content/5 bg-base-100 m-10 pr-5 pl-5 md:min-w-xl;
+}

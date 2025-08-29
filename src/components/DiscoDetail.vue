@@ -3,22 +3,14 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router';
 import { goToDetail } from '@/services/goTo';
+import { getDetailData } from '@/services/getData';
 
 const router = useRouter()
 const route = useRoute()
 const apiData = ref('');
 
 onMounted(async () => {
-  const { id } = route.params;
-  const apiUrl = `http://localhost:3000/disco/${id}`; // Replace with your API endpoint URL
-  
-  axios.get(apiUrl)
-    .then((response) => {
-    apiData.value = response.data;
-    })
-    .catch((error) => {
-    console.error('Error fetching data:', error);
-  });
+  apiData.value = await getDetailData('disco',route);
 });
 
 function getCover(ID_DISCO) {
