@@ -1,23 +1,16 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router';
 import { goToDetail } from '@/services/goTo';
+import { getListData } from '@/services/getData';
 
 const router = useRouter()
 const route = useRoute()
 const apiData = ref('');
 
 onMounted( async () => {
-  const { name } = route.params;
-  const apiUrl = `http://localhost:3000/banda/search/${name}`; // Replace with your API endpoint URL
-  await axios.get(apiUrl)
-    .then((response) => {
-    apiData.value = response.data;
-    })
-    .catch((error) => {
-    console.error('Error fetching data:', error);
-  });
+  apiData.value = await getListData('banda',route);
+
 });
 function showDate(fund,ext) {
   const funRes = (fund > 1800) ? fund : 's/f';

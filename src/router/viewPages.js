@@ -22,7 +22,7 @@ const router = [
   { path: '/autor/search/:name', name: 'autorList', component: AutorList },
   { path: '/banda', name: 'bandaSearch', component: BandaSearch },
   { path: '/banda/:id', name: 'bandaDetail', component: BandaDetail },
-  { path: '/banda/search/:name', name: 'bandaList', component: BandaList },
+  { path: '/banda/search/:query', name: 'bandaList', component: BandaList },
   { path: '/disco', name: 'discoSearch', component: DiscoSearch },
   { path: '/disco/:id', name: 'discoDetail', component: DiscoDetail },
   { path: '/disco/search/:name', name: 'discoList', component: DiscoList }
