@@ -2,23 +2,18 @@
 import { ref, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { getDetailData } from '@/services/getData';
+import { goToDetail } from '@/services/goTo';
 
 const router = useRouter();
 const route = useRoute()
 const apiData = ref('');
 
-onMounted(async () => {
-  apiData.value = await getDetailData('autor', route);
-});
+const AUTOR = 'autor';
+const MARCHA = 'marcha';
 
-function goToMarcha(id) {
-  router.push({
-    name: 'marchaDetail',
-    params: {
-      id,
-    },
-  });
-};
+onMounted(async () => {
+  apiData.value = await getDetailData(AUTOR, route);
+});
 </script>
 
 <template>
@@ -48,7 +43,7 @@ function goToMarcha(id) {
         <tbody v-for="m in apiData.marchas">
           <tr>
             <td>
-              <a class="hover:underline cursor-pointer" @click="goToMarcha(m.ID_MARCHA)">
+              <a class="hover:underline cursor-pointer" @click="goToDetail(router, MARCHA, m.ID_MARCHA)">
                 {{ m.TITULO }}
               </a>
             </td>

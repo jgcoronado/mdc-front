@@ -14,7 +14,6 @@ export async function getDetailData(page,route) {
 export async function getListData(page,route) {
   const { query } = route.params;
   const apiUrl = `${BASE_URL}/${page}/search?${query}`;
-  console.log("🚀 ~ getListData ~ apiUrl:", apiUrl)
   
   const res = await axios.get(apiUrl);
   return res.data;

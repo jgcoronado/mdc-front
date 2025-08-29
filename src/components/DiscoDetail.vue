@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router';
 import { goToDetail } from '@/services/goTo';
 import { getDetailData } from '@/services/getData';
@@ -22,8 +21,8 @@ function getAlt(NOMBRE_CD) {
 </script>
 
 <template>
-  <div v-if="apiData" class="justify-items-center">
-    <div class=" place-items-center  xl:join md:join join-vertically">
+  <div v-if="apiData" class="grid place-items-center">
+    <div class="grid place-items-center xl:join md:join join-vertically">
       <figure class="m-1">
         <img
           class="shadow-sm"
@@ -31,9 +30,7 @@ function getAlt(NOMBRE_CD) {
           :alt="getAlt(apiData.NOMBRE_CD)"
         />
       </figure>
-
-    <div>
-
+    <div class="justify-items-center">
       <div
         class="card bg-accent-content rounded-box grid h-20 place-items-center text-3xl p-5"
       >
@@ -61,11 +58,7 @@ function getAlt(NOMBRE_CD) {
         </table>
       </div>
     </div>
-
-
   </div>
-
-
     <div class="divider">Este disco contiene {{ apiData.marchasLength }} marchas:</div>
       <table class="table table-zebra">
         <thead>

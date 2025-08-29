@@ -8,16 +8,10 @@ const router = useRouter()
 const route = useRoute()
 const apiData = ref('');
 
+const AUTOR = 'autor';
+
 onMounted( async () => {
-  const titulo = route.params.name;
-  const apiUrl = `http://localhost:3000/autor/search/${titulo}`; // Replace with your API endpoint URL
-  await axios.get(apiUrl)
-    .then((response) => {
-    apiData.value = response.data;
-    })
-    .catch((error) => {
-    console.error('Error fetching data:', error);
-  });
+  apiData.value = await getListData(AUTOR,route);
 });
 </script>
 

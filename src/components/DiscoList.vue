@@ -8,38 +8,17 @@ const router = useRouter()
 const route = useRoute()
 const apiData = ref('');
 
+const DISCO = 'disco';
+
 onMounted( async () => {
-  const { name } = route.params;
-  const apiUrl = `http://localhost:3000/disco/search/${name}`; // Replace with your API endpoint URL
-  await axios.get(apiUrl)
-    .then((response) => {
-    apiData.value = response.data;
-    })
-    .catch((error) => {
-    console.error('Error fetching data:', error);
-  });
+  apiData.value = await getListData(DISCO,route);
 });
+
 function showDate(fund,ext) {
   const funRes = (fund > 1800) ? fund : 's/f';
   const extRes = (ext == null) || (ext === 0) ? '' : ` - ${ext}`;
   return `${funRes}${extRes}`;
 }
-function goToDisco(id) {
-  router.push({
-    name: 'discoDetail',
-    params: {
-      id,
-    },
-  });
-};
-function goToBanda(id) {
-  router.push({
-    name: 'bandaDetail',
-    params: {
-      id,
-    },
-  });
-};
 </script>
 
 <template>

@@ -1,11 +1,14 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios';
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router';
+import { goToDetail } from '@/services/goTo';
 
 const router = useRouter()
 const route = useRoute()
 const apiData = ref('');
+
+const AUTOR = 'autor';
 
 onMounted(async () => {
   const { id } = route.params;
@@ -54,7 +57,7 @@ onMounted(async () => {
             <th>Autor</th>
             <td>
               <div v-for="a in apiData.AUTOR">
-                <a @click="goToAutor(a.autorId)">
+                <a @click="goToDetail(router, AUTOR, a.autorId)">
                   {{ a.nombre }}
                 </a>
               </div>

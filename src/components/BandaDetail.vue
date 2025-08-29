@@ -38,8 +38,8 @@ onMounted(async () => {
         </tbody>
       </table>
     </div>
-    <div class="grid justify-items-center">  
-      <Timeline v-bind:apiData />
+    <div class="grid place-items-center">  
+      <Timeline v-bind:apiData/>
     </div>
 
     <div class="divider">Esta banda ha grabado {{ apiData.discosLength }} discos:</div>

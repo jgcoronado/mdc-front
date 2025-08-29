@@ -8,12 +8,16 @@ const r = useRouter()
 const route = useRoute()
 const apiData = ref('');
 
+const MARCHA = 'marcha';
+const AUTOR = 'autor';
+
 onMounted( async () => {
-  apiData.value = await getListData('marcha',route);
+  apiData.value = await getListData(MARCHA,route);
 });
 </script>
 
 <template>
+  <div class="divider"> Se han encontrado {{ apiData.rowsReturned }} marchas:</div>
   <div class="tableList">
     <table class="table table-zebra">
       <thead>
@@ -26,13 +30,13 @@ onMounted( async () => {
       <tbody>
         <tr v-for="marcha in apiData.data">
           <td>
-            <a class="hover:underline cursor-pointer" @click="goToDetail(r, 'marcha', marcha.ID_MARCHA)">
+            <a class="hover:underline cursor-pointer" @click="goToDetail(r, MARCHA, marcha.ID_MARCHA)">
               {{ marcha.TITULO }}
             </a>
           </td>
           <td>
             <div v-for="a in marcha.AUTOR">
-              <a class="hover:underline cursor-pointer" @click="goToDetail(r,'autor',a.autorId)">
+              <a class="hover:underline cursor-pointer" @click="goToDetail(r,AUTOR,a.autorId)">
                 {{ a.nombre }}
               </a>
             </div>
