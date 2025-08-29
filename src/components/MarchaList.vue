@@ -1,28 +1,20 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router'
 import { goToDetail } from '@/services/goTo';
+import { getListData } from '@/services/getData';
 
 const r = useRouter()
 const route = useRoute()
 const apiData = ref('');
 
 onMounted( async () => {
-  const { query } = route.params;
-  const apiUrl = `http://localhost:3000/marcha/search?${query}`; // Replace with your API endpoint URL
-  await axios.get(apiUrl)
-    .then((response) => {
-    apiData.value = response.data;
-    })
-    .catch((error) => {
-    console.error('Error fetching data:', error);
-  });
+  apiData.value = await getListData('marcha',route);
 });
 </script>
 
 <template>
-  <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 m-10 pr-5 pl-5 md:min-w-xl">
+  <div class="tableList">
     <table class="table table-zebra">
       <thead>
         <tr>
