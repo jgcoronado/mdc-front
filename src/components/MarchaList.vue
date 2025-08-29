@@ -27,7 +27,7 @@ onMounted( async () => {
 </script>
 
 <template>
-  <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 m-10 pr-5 pl-5">
+  <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 m-10 pr-5 pl-5 md:min-w-xl">
     <table class="table table-zebra">
       <thead>
         <tr>
@@ -36,8 +36,8 @@ onMounted( async () => {
           <td>Fecha</td>
         </tr>
       </thead>
-      <tbody v-for="marcha in apiData.data">
-        <tr>
+      <tbody>
+        <tr v-for="marcha in apiData.data">
           <td>
             <a class="hover:underline cursor-pointer" @click="goToDetail(r, 'marcha', marcha.ID_MARCHA)">
               {{ marcha.TITULO }}

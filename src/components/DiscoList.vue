@@ -52,8 +52,8 @@ function goToBanda(id) {
           <td>Fecha</td>
         </tr>
       </thead>
-      <tbody v-for="d in apiData.data">
-        <tr>
+      <tbody>
+        <tr v-for="d in apiData.data">
           <td>
             <a class="hover:underline cursor-pointer" @click="goToDetail(router, 'disco', d.ID_DISCO)">
               {{ d.NOMBRE_CD }}

@@ -32,7 +32,7 @@ function getDedicatoria(ded, loc) {
 
 <template>
   <div v-if="apiData">
-    <div class="card bg-accent-content rounded-box grid h-20 place-items-center text-3xl">{{ apiData.TITULO }}</div>
+    <div class="card bg-accent-content rounded-box grid h-20 place-items-center text-3xl md:min-w-xl">{{ apiData.TITULO }}</div>
     <div class="overflow-x-auto">
       <table class="table table-zebra">
         <tbody>
@@ -67,13 +67,10 @@ function getDedicatoria(ded, loc) {
         </tbody>
       </table>
     </div>
-    
-    <div class="divider">Esta marcha se ha grabado en {{ apiData.discosLength }} discos:</div>
-      <div v-for="d in apiData.discos">
-        <div>
-          <CdList v-bind:disco="d" />
-        </div>
-      </div>
-    </div>
+    <br />
+    <div v-if="apiData.discosLength !== 0" class="divider">Esta marcha se ha grabado en {{ apiData.discosLength }} discos:</div>
+      <CdList v-for="d in apiData.discos" v-bind:disco="d" />
+    <div v-if="apiData.discosLength === 0" class="divider">Esta marcha aún no ha sido grabada en disco.</div>
+  </div>
   <p v-else>Loading...</p>   
 </template>

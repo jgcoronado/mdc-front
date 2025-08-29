@@ -15,6 +15,9 @@
           {{disco.BANDA}}
         </a>
       </div>
+      <div v-else-if="disco.DISCOS > 1" class="text-sm font-semibold opacity-60 indent-4">
+        {{ disco.DISCOS }} CDs, {{ disco.PISTAS }} marchas
+      </div>
       <div v-else class="text-sm font-semibold opacity-60 indent-4">
         {{ disco.PISTAS }} marchas
       </div>
@@ -36,6 +39,7 @@ const props = defineProps({
     NOMBRE_CD: String,
     FECHA_CD: Number,
     ID_BANDA: Number,
+    DISCOS: Number,
     BANDA: String,
     PISTAS: Number
   }

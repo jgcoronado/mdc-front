@@ -32,14 +32,14 @@ function goToMarchaList() {
 
 <template>
   <fieldset
-    class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4"
+    class="fieldset bg-base-200 border-base-300 rounded-box w-ms border p-4 md:min-w-xl place-items-center"
     @keyup.enter="goToMarchaList()"
   >
     <legend class="fieldset-legend">Buscador de marchas procesionales</legend>
 
     <label class="label">Título</label>
     <input
-      class="input"
+      class="input w-full"
       type="text"
       v-model="titulo"
       placeholder="Ejemplo: Consuelo Gitano"
@@ -65,21 +65,21 @@ function goToMarchaList() {
     </div>
     <label class="label">Dedicatoria</label>
     <input
-      class="input"
+      class="input w-full"
       type="text"
       v-model="dedicatoria"
       placeholder="Ejemplo: Hdad Cristo de la Corona"
     />
     <label class="label">Localidad</label>
     <input
-      class="input"
+      class="input w-full"
       type="text"
       v-model="localidad"
       placeholder="Ejemplo: Osuna"
     />
     <label class="label">Provincia</label>
     <input
-      class="input"
+      class="input w-full"
       type="text"
       v-model="provincia"
       placeholder="Ejemplo: Almería"

@@ -74,8 +74,8 @@ function newBandaDetail(page,id) {
             <td>Fecha</td>
           </tr>
         </thead>
-        <tbody v-for="m in apiData.marchas">
-          <tr>
+        <tbody>
+          <tr v-for="m in apiData.marchas">
             <td>{{ m.FECHA }}</td>
             <td>
               <a
