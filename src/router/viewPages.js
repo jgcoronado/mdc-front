@@ -16,7 +16,7 @@ const router = [
   { path: '/', name: 'home', component: HelloWorld },
   { path: '/marcha', name: 'marchaSearch', component: MarchaSearch },
   { path: '/marcha/:id', name: 'marchaDetail', component: MarchaDetail },
-  { path: '/marcha/search?:query', name: 'marchaList', component: MarchaList },
+  { path: '/marcha/search/:query', name: 'marchaList', component: MarchaList },
   { path: '/autor', name: 'autorSearch', component: AutorSearch },
   { path: '/autor/:id', name: 'autorDetail', component: AutorDetail },
   { path: '/autor/search/:name', name: 'autorList', component: AutorList },

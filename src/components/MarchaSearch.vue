@@ -10,6 +10,7 @@ const fechaFin = ref('');
 const dedicatoria= ref('');
 const localidad= ref('');
 const provincia= ref('');
+let urlJoin = ref({});
 
 function goToMarchaList() {
   const url = [];
@@ -20,7 +21,7 @@ function goToMarchaList() {
   if(localidad.value) url.push(`localidad=${localidad.value}`);
   if(provincia.value) url.push(`provincia=${provincia.value}`);
 
-  const urlJoin = url.join('&');
+  urlJoin = url.join('&');
   router.push({
     name: 'marchaList',
     params: {
