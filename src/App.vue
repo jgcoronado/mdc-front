@@ -14,7 +14,7 @@
       <li><RouterLink to="/disco">Disco</RouterLink></li>
     </ul>  
   </nav>
-  <body class="grid justify-items-center">    
+  <body class="grid justify-items-center pb-10">    
     <div>
       <RouterView />
     </div>

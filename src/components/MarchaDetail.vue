@@ -24,8 +24,8 @@ function getDedicatoria(ded, loc) {
 
 <template>
   <div v-if="apiData">
-    <div class="card bg-accent-content rounded-box grid h-20 place-items-center text-3xl md:min-w-xl">{{ apiData.TITULO }}</div>
-    <div class="overflow-x-auto">
+    <div class="headDetail">{{ apiData.TITULO }}</div>
+    <div class="tableList">
       <table class="table table-zebra">
         <tbody>
           <tr v-if="apiData.FECHA">
@@ -42,13 +42,13 @@ function getDedicatoria(ded, loc) {
               </div>
             </td>
           </tr>
-          <tr  v-if="apiData.DEDICATORIA">
+          <tr v-if="apiData.DEDICATORIA">
             <th>Dedicatoria</th>
             <td>
               {{ getDedicatoria(apiData.DEDICATORIA, apiData.LOCALIDAD) }}
             </td>
           </tr>
-          <tr>
+          <tr v-if="apiData.BANDA_ESTRENO">
             <th>Estrenada por</th>
             <td>
               <a class="hover:underline cursor-pointer" @click="goToDetail(router,'banda',apiData.BANDA_ESTRENO)">
@@ -59,10 +59,13 @@ function getDedicatoria(ded, loc) {
         </tbody>
       </table>
     </div>
-    <br />
-    <div v-if="apiData.discosLength !== 0" class="divider">Esta marcha se ha grabado en {{ apiData.discosLength }} discos:</div>
-      <CdList v-for="d in apiData.discos" v-bind:disco="d" />
-    <div v-if="apiData.discosLength === 0" class="divider">Esta marcha aún no ha sido grabada en disco.</div>
+    <div v-if="apiData.discosLength !== 0" class="divider py-10 my-0">Esta marcha se ha grabado en {{ apiData.discosLength }} discos:</div>
+      <CdList
+        class="m-3"
+        v-for="d in apiData.discos"
+        :disco="d"
+      />
+    <div v-if="apiData.discosLength === 0" class="divider py-10 my-0">Esta marcha aún no ha sido grabada en disco.</div>
   </div>
   <p v-else>Loading...</p>   
 </template>

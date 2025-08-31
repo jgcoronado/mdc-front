@@ -3,5 +3,9 @@
   themes: light --default, dark --prefersdark;
 }
 @utility tableList {
-  @apply overflow-x-auto rounded-box border border-base-content/5 bg-base-100 m-10 pr-5 pl-5 md:min-w-xl;
+  @apply overflow-x-auto rounded-box bg-base-100 p-1 md:min-w-xl;
+}
+
+@utility headDetail {
+  @apply overflow-visible card bg-neutral-content text-neutral rounded-box grid m-3 place-items-center text-3xl md:min-w-xl p-5;
 }

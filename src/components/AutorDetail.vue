@@ -17,8 +17,8 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="card bg-accent-content rounded-box grid h-20 place-items-center text-3xl">{{ apiData.NOMBRE }} {{ apiData.APELLIDOS }}</div>
-    <div class="overflow-x-auto">
+    <div class="headDetail">{{ apiData.NOMBRE }} {{ apiData.APELLIDOS }}</div>
+    <div class="tableList">
       <table class="table table-zebra">
         <tbody>
           <tr>
@@ -32,16 +32,17 @@ onMounted(async () => {
         </tbody>
       </table>
     </div>
-    <div class="divider">Ha compuesto {{ apiData.marchasLength }} marchas:</div>
+    <div class="divider py-10 my-0">Ha compuesto {{ apiData.marchasLength }} marchas:</div>
+    <div class="tableList">
       <table class="table table-zebra">
-        <thead>
-          <tr>
+        <thead class="bg-neutral-content text-neutral">
+          <tr class="">
             <td>Marcha</td>
             <td>Fecha</td>
           </tr>
         </thead>
-        <tbody v-for="m in apiData.marchas">
-          <tr>
+        <tbody>
+          <tr v-for="m in apiData.marchas">
             <td>
               <a class="hover:underline cursor-pointer" @click="goToDetail(router, MARCHA, m.ID_MARCHA)">
                 {{ m.TITULO }}
@@ -49,6 +50,8 @@ onMounted(async () => {
             </td>
             <td>{{ m.FECHA }}</td>
           </tr>
+          <tr></tr>
         </tbody>
       </table>
+    </div>
 </template>

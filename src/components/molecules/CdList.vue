@@ -1,5 +1,5 @@
 <template>
-  <ul class="list bg-base-100 rounded-box shadow-md">  
+  <ul class="list bg-base-200 hover:bg-base-300 rounded-box shadow-md">  
   <li class="list-row">
     <div class="cursor-pointer">
       <a @click="goToDetail($router, 'disco',disco.ID_DISCO)">

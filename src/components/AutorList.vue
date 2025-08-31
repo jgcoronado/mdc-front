@@ -10,8 +10,14 @@ const apiData = ref('');
 
 const AUTOR = 'autor';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 onMounted( async () => {
-  apiData.value = await getListData(AUTOR,route);
+  const { name } = route.params;
+  const apiUrl = `${BASE_URL}/${AUTOR}/search/${name}`;
+  
+  const res = await axios.get(apiUrl);
+  apiData.value = res.data;
 });
 </script>
 

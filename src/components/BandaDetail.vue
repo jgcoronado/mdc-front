@@ -17,10 +17,10 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="card bg-accent-content rounded-box grid h-20 place-items-center text-3xl">
+    <div class="headDetail">
       {{ apiData.NOMBRE_BREVE }}
     </div>
-    <div class="overflow-x-auto">
+    <div class="tableList">
       <table class="table table-zebra">
         <tbody>
           <tr>
@@ -42,18 +42,20 @@ onMounted(async () => {
       <Timeline v-bind:apiData/>
     </div>
 
-    <div class="divider">Esta banda ha grabado {{ apiData.discosLength }} discos:</div>
-      <div v-for="d in apiData.discos">
-        <div>
-          <CdList v-bind:disco="d" />
-        </div>
-      </div>
-    <div class="divider">Esta banda ha estrenado {{ apiData.marchasLength }} marchas:</div>
+    <div v-if="apiData.discosLength" class="divider py-10 my-0">Esta banda ha grabado {{ apiData.discosLength }} discos:</div>
+      <CdList
+        class="m-3"
+        v-for="d in apiData.discos"
+        :disco="d"
+      />
+    <div v-if="apiData.marchasLength" class="divider py-10 my-0">Esta banda ha estrenado {{ apiData.marchasLength }} marchas:</div>
+    <div class="tableList">
       <table class="table table-zebra">
-        <thead>
+        <thead class="bg-neutral-content text-neutral">
           <tr>
             <td>Marcha</td>
             <td>Fecha</td>
+            <td>Compositor/es</td>
           </tr>
         </thead>
         <tbody>
@@ -80,4 +82,6 @@ onMounted(async () => {
           </tr>
         </tbody>
       </table>
+    </div>
+    <br />
 </template>

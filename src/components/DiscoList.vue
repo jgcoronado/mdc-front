@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router';
 import { goToDetail } from '@/services/goTo';
+import { getListData } from '@/services/getData';
 
 const router = useRouter()
 const route = useRoute()
@@ -10,9 +11,16 @@ const apiData = ref('');
 
 const DISCO = 'disco';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 onMounted( async () => {
-  apiData.value = await getListData(DISCO,route);
+  const { name } = route.params;
+  const apiUrl = `${BASE_URL}/${DISCO}/search/${name}`;
+  
+  const res = await axios.get(apiUrl);
+  apiData.value = res.data;
 });
+
 
 function showDate(fund,ext) {
   const funRes = (fund > 1800) ? fund : 's/f';

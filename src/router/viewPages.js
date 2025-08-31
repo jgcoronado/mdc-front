@@ -1,4 +1,4 @@
-import HelloWorld from '@/components/HelloWorld.vue';
+import Home from '@/components/Home.vue';
 import MarchaDetail from '@/components/MarchaDetail.vue';
 import MarchaList from '@/components/MarchaList.vue';
 import MarchaSearch from '@/components/MarchaSearch.vue';
@@ -13,7 +13,7 @@ import DiscoList from '@/components/DiscoList.vue';
 import DiscoSearch from '@/components/DiscoSearch.vue';
 
 const router = [
-  { path: '/', name: 'home', component: HelloWorld },
+  { path: '/', name: 'home', component: Home },
   { path: '/marcha', name: 'marchaSearch', component: MarchaSearch },
   { path: '/marcha/:id', name: 'marchaDetail', component: MarchaDetail },
   { path: '/marcha/search/:query', name: 'marchaList', component: MarchaList },

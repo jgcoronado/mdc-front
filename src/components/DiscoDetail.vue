@@ -32,11 +32,11 @@ function getAlt(NOMBRE_CD) {
       </figure>
     <div class="justify-items-center">
       <div
-        class="card bg-accent-content rounded-box grid h-20 place-items-center text-3xl p-5"
+        class="headDetail"
       >
         {{ apiData.NOMBRE_CD }}
       </div>
-      <div class="overflow-x-auto">
+      <div class="tableList">
         <table class="table table-zebra">
           <tbody>
             <tr>
@@ -59,45 +59,47 @@ function getAlt(NOMBRE_CD) {
       </div>
     </div>
   </div>
-    <div class="divider">Este disco contiene {{ apiData.marchasLength }} marchas:</div>
+    <div class="divider py-10 my-0">Este disco contiene {{ apiData.marchasLength }} marchas:</div>
+    <div class="tableList">
       <table class="table table-zebra">
-        <thead>
-          <tr>
-            <td v-if="apiData.DISCOS > 1">Disco</td>
-            <td>#</td>
-            <td>Marcha</td>
-            <td>Autor</td>
-            <td>Fecha</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="m in apiData.marchas">
-            <td v-if="apiData.DISCOS > 1">
-              {{ m.N_DISCO }}
-            </td>
-            <td>{{ m.NUMEROMARCHA }}</td>
+           <thead class="bg-neutral-content text-neutral">
+            <tr>
+              <td v-if="apiData.DISCOS > 1">Disco</td>
+              <td>#</td>
+              <td>Marcha</td>
+              <td>Autor</td>
+              <td>Fecha</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="m in apiData.marchas">
+              <td v-if="apiData.DISCOS > 1">
+                {{ m.N_DISCO }}
+              </td>
+              <td>{{ m.NUMEROMARCHA }}</td>
+              <td>
+                <a 
+                  class="hover:underline cursor-pointer"
+                  @click="goToDetail(router, 'marcha', m.ID_MARCHA)"
+                >
+                  {{ m.TITULO }}
+                </a>
+              </td>
             <td>
-              <a 
-                class="hover:underline cursor-pointer"
-                @click="goToDetail(router, 'marcha', m.ID_MARCHA)"
-              >
-                {{ m.TITULO }}
-              </a>
+              <div v-for="a in m.AUTOR">
+                <a
+                  class="hover:underline cursor-pointer"
+                  @click="goToDetail(router, 'autor', a.autorId)"
+                >
+                  {{ a.nombre }}
+                </a>
+              </div>
             </td>
-          <td>
-            <div v-for="a in m.AUTOR">
-              <a
-                class="hover:underline cursor-pointer"
-                @click="goToDetail(router, 'autor', a.autorId)"
-              >
-                {{ a.nombre }}
-              </a>
-            </div>
-          </td>
-            <td>{{ m.FECHA }}</td>
-          </tr>
-        </tbody>
-      </table>
+              <td>{{ m.FECHA }}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>  
   </div>
   <p v-else>Loading...</p>   
 </template>
