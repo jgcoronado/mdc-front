@@ -11,6 +11,7 @@ import BandaSearch from '@/components/BandaSearch.vue';
 import DiscoDetail from '@/components/DiscoDetail.vue';
 import DiscoList from '@/components/DiscoList.vue';
 import DiscoSearch from '@/components/DiscoSearch.vue';
+import Stats from '@/components/Stats.vue';
 
 const router = [
   { path: '/', name: 'home', component: Home },
@@ -25,7 +26,8 @@ const router = [
   { path: '/banda/search/:query', name: 'bandaList', component: BandaList },
   { path: '/disco', name: 'discoSearch', component: DiscoSearch },
   { path: '/disco/:id', name: 'discoDetail', component: DiscoDetail },
-  { path: '/disco/search/:name', name: 'discoList', component: DiscoList }
+  { path: '/disco/search/:name', name: 'discoList', component: DiscoList },
+  { path: '/estadisticas', name: 'stats', component: Stats }
 ]
 
 export default router;

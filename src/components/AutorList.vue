@@ -24,7 +24,7 @@ onMounted( async () => {
 <template>
   <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 m-10 pr-5 pl-5">
     <table class="table table-zebra">
-      <thead>
+      <thead class="bg-neutral-content text-neutral">
         <tr>
           <td>Nombre</td>
         </tr>
