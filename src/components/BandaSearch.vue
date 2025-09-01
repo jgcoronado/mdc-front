@@ -35,21 +35,21 @@ function goToBandaList(text) {
 
     <label class="label">Nombre</label>
     <input
-      class="input w-full"
+      class="input w-full text-base"
       type="text"
       v-model="titulo"
       placeholder="Ejemplo: Sagrada Columna y Azotes"
     />
     <label class="label">Localidad</label>
     <input
-      class="input w-full"
+      class="input w-full text-base"
       type="text"
       v-model="localidad"
       placeholder="Ejemplo: Palma del Río"
     />
     <label class="label">Provincia</label>
     <input
-      class="input w-full"
+      class="input w-full text-base"
       type="text"
       v-model="provincia"
       placeholder="Ejemplo: Huelva"

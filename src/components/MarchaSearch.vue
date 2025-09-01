@@ -40,7 +40,7 @@ function goToMarchaList() {
 
     <label class="label">Título</label>
     <input
-      class="input w-full"
+      class="input w-full text-base"
       type="text"
       v-model="titulo"
       placeholder="Ejemplo: Consuelo Gitano"
@@ -48,7 +48,7 @@ function goToMarchaList() {
     <label class="label">Fecha</label>
     <div class="join">
       <input
-        class="input"
+        class="input text-base"
         type="text"
         maxlength="4"
         size="4"
@@ -56,7 +56,7 @@ function goToMarchaList() {
         placeholder="Desde: 1993"
       />
       <input
-        class="input"
+        class="input text-base"
         type="text"
         maxlength="4"
         size="4"
@@ -66,21 +66,21 @@ function goToMarchaList() {
     </div>
     <label class="label">Dedicatoria</label>
     <input
-      class="input w-full"
+      class="input w-full text-base"
       type="text"
       v-model="dedicatoria"
       placeholder="Ejemplo: Hdad Cristo de la Corona"
     />
     <label class="label">Localidad</label>
     <input
-      class="input w-full"
+      class="input w-full text-base"
       type="text"
       v-model="localidad"
       placeholder="Ejemplo: Osuna"
     />
     <label class="label">Provincia</label>
     <input
-      class="input w-full"
+      class="input w-full text-base"
       type="text"
       v-model="provincia"
       placeholder="Ejemplo: Almería"

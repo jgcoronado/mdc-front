@@ -12,7 +12,7 @@ onMounted( async () => {
 });
 </script>
 <template>
-    <div>Dimensión de la base de datos:
+    <div class="p-5 text-center">Dimensión de la base de datos:
         {{ estado.MARCHAS }} marchas,
         {{ estado.AUTORES }} autores,
         {{ estado.BANDAS }} bandas y

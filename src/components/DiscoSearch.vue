@@ -30,7 +30,7 @@ function goToDiscoList() {
 
     <label class="label">Nombre</label>
     <input
-      class="input w-full"
+      class="input w-full text-base"
       type="text"
       v-model="nombre"
       placeholder="Ejemplo: Fons Vitae"
