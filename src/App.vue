@@ -1,4 +1,5 @@
 <script setup>
+import DbCount from './components/molecules/DbCount.vue';
 </script>
 
 <template>
@@ -20,6 +21,7 @@
       <RouterView />
     </div>
   </body>
-  <footer>
+  <footer class="grid justify-items-center pb-10">
+    <DbCount />
   </footer>
 </template>
