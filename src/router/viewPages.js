@@ -20,7 +20,7 @@ const router = [
   { path: '/marcha/search/:query', name: 'marchaList', component: MarchaList },
   { path: '/autor', name: 'autorSearch', component: AutorSearch },
   { path: '/autor/:id', name: 'autorDetail', component: AutorDetail },
-  { path: '/autor/search/:name', name: 'autorList', component: AutorList },
+  { path: '/autor/search/:query', name: 'autorList', component: AutorList },
   { path: '/banda', name: 'bandaSearch', component: BandaSearch },
   { path: '/banda/:id', name: 'bandaDetail', component: BandaDetail },
   { path: '/banda/search/:query', name: 'bandaList', component: BandaList },

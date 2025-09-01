@@ -4,31 +4,44 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const text = ref('');
+const nombre= ref('');
+let urlJoin = ref({});
 
 function goToAutorList(text) {
+  const url = [];
+  if(nombre.value) url.push(`nombre=${nombre.value}`);
+  urlJoin = url.join('&');
+
   router.push({
     name: 'autorList',
     params: {
-      name: text,
+      query: urlJoin,
     },
   });
 };
 </script>
 
 <template>
-  <input
-    class="input"
-    type="text"
-    v-model="text"
-    @keyup.enter="goToAutorList(text)"
-    placeholder="Buscar autor por nombre"
-  />
-  <button
-    class="btn"
-    @click="goToAutorList(text)"
+  <fieldset
+    class="fieldset bg-base-200 border-base-300 rounded-box w-ms border p-4 md:min-w-xl place-items-center"
+    @keyup.enter="goToAutorList()"
   >
-  Buscar
-  </button>
+    <legend class="fieldset-legend">Buscador de marchas procesionales</legend>
+
+    <label class="label">Nombre</label>
+    <input
+      class="input w-full"
+      type="text"
+      v-model="nombre"
+      placeholder="Ejemplo: Consuelo Gitano"
+    />
+    <button
+      class="btn btn-neutral mt-4"
+      @keyup.enter="goToAutorList()"
+      @click="goToAutorList()"
+    >
+      Buscar
+    </button>
+  </fieldset>
 </template>
 
