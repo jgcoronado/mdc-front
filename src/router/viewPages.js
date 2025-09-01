@@ -26,7 +26,7 @@ const router = [
   { path: '/banda/search/:query', name: 'bandaList', component: BandaList },
   { path: '/disco', name: 'discoSearch', component: DiscoSearch },
   { path: '/disco/:id', name: 'discoDetail', component: DiscoDetail },
-  { path: '/disco/search/:name', name: 'discoList', component: DiscoList },
+  { path: '/disco/search/:query', name: 'discoList', component: DiscoList },
   { path: '/estadisticas', name: 'stats', component: Stats }
 ]
 

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import axios from 'axios';
+import CdList from './molecules/CdList.vue';
 import { useRouter, useRoute } from 'vue-router';
 import { goToDetail } from '@/services/goTo';
 import { getListData } from '@/services/getData';
@@ -11,14 +11,8 @@ const apiData = ref('');
 
 const DISCO = 'disco';
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
-
 onMounted( async () => {
-  const { name } = route.params;
-  const apiUrl = `${BASE_URL}/${DISCO}/search/${name}`;
-  
-  const res = await axios.get(apiUrl);
-  apiData.value = res.data;
+  apiData.value = await getListData(DISCO,route);
 });
 
 
@@ -30,33 +24,12 @@ function showDate(fund,ext) {
 </script>
 
 <template>
-  <div v-if="apiData.rowsReturned > 0" class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 m-10 pr-5 pl-5">
-    <table class="table table-zebra">
-      <thead>
-        <tr>
-          <td>Nombre</td>
-          <td>Banda</td>
-          <td>Fecha</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="d in apiData.data">
-          <td>
-            <a class="hover:underline cursor-pointer" @click="goToDetail(router, 'disco', d.ID_DISCO)">
-              {{ d.NOMBRE_CD }}
-            </a>
-          </td>
-          <td>
-            <a class="hover:underline cursor-pointer" @click="goToDetail(router, 'banda', d.ID_BANDA)">
-              {{ d.BANDA }}
-            </a>
-          </td>
-          <td>
-            {{ d.FECHA_CD }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div v-else class="divider py-10 my-0"> Lo sentimos, hay ningún resultado para su búsqueda.</div>
+  <div v-if="apiData.rowsReturned < 1" class="divider py-10 my-0"> Lo sentimos, no se ha encontrado ningún disco.</div>
+  <div v-else-if="apiData.rowsReturned == 1" class="divider py-10 my-0"> Se ha encontrado un disco:</div>
+  <div v-else class="divider py-10 my-0"> Se han encontrado {{ apiData.rowsReturned }} discos:</div>
+    <CdList
+    class="m-3"
+    v-for="d in apiData.data"
+    :disco="d"
+  />
 </template>

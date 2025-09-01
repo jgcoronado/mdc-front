@@ -29,10 +29,12 @@ function showLocalidad(loc, prov) {
 </script>
 
 <template>
-  <div class="divider"> Se han encontrado {{ apiData.rowsReturned }} bandas:</div>
+  <div v-if="apiData.rowsReturned < 1" class="divider py-10 my-0"> Lo sentimos, no se ha encontrado ninguna banda.</div>
+  <div v-else-if="apiData.rowsReturned == 1" class="divider py-10 my-0"> Se ha encontrado una banda:</div>
+  <div v-else class="divider py-10 my-0"> Se han encontrado {{ apiData.rowsReturned }} bandas:</div>
   <div class="tableList">
     <table class="table table-zebra">
-      <thead>
+      <thead  class="bg-neutral-content text-neutral">
         <tr>
           <td>Nombre</td>
           <td>Localidad</td>

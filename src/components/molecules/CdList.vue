@@ -45,5 +45,5 @@ const props = defineProps({
   }
 })
 
-const srcImg = ref(`../src/assets/cover/${props.disco.ID_DISCO}.png`);
+const srcImg = ref(`../../src/assets/cover/${props.disco.ID_DISCO}.png`);
 </script>

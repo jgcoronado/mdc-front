@@ -7,7 +7,7 @@ const router = useRouter()
 const nombre= ref('');
 let urlJoin = ref({});
 
-function goToAutorList(text) {
+function goToAutorList() {
   const url = [];
   if(nombre.value) url.push(`nombre=${nombre.value}`);
   urlJoin = url.join('&');
@@ -26,14 +26,14 @@ function goToAutorList(text) {
     class="fieldset bg-base-200 border-base-300 rounded-box w-ms border p-4 md:min-w-xl place-items-center"
     @keyup.enter="goToAutorList()"
   >
-    <legend class="fieldset-legend">Buscador de marchas procesionales</legend>
+    <legend class="fieldset-legend">Buscador de compositores</legend>
 
     <label class="label">Nombre</label>
     <input
       class="input w-full"
       type="text"
       v-model="nombre"
-      placeholder="Ejemplo: Consuelo Gitano"
+      placeholder="Ejemplo: Manuel Rodríguez Ruiz"
     />
     <button
       class="btn btn-neutral mt-4"

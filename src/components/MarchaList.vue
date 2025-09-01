@@ -22,7 +22,7 @@ onMounted( async () => {
   <div v-else class="divider py-10 my-0"> Se han encontrado {{ apiData.rowsReturned }} marchas:</div>
   <div v-if="apiData.rowsReturned > 0" class="tableList">
     <table class="table table-zebra">
-      <thead>
+      <thead class="bg-neutral-content text-neutral">
         <tr>
           <td>Título</td>
           <td>Compositor/es</td>
