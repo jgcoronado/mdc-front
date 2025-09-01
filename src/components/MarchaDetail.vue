@@ -56,6 +56,10 @@ function getDedicatoria(ded, loc) {
               </a>
             </td>
           </tr>
+          <tr v-if="apiData.DETALLES_MARCHA">
+            <th>Información adicional</th>
+            <td>{{ apiData.DETALLES_MARCHA }}</td>
+          </tr>
         </tbody>
       </table>
     </div>

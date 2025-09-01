@@ -30,7 +30,7 @@ function showDate(fund,ext) {
 </script>
 
 <template>
-  <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 m-10 pr-5 pl-5">
+  <div v-if="apiData.rowsReturned > 0" class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 m-10 pr-5 pl-5">
     <table class="table table-zebra">
       <thead>
         <tr>
@@ -58,4 +58,5 @@ function showDate(fund,ext) {
       </tbody>
     </table>
   </div>
+  <div v-else class="divider py-10 my-0"> Lo sentimos, hay ningún resultado para su búsqueda.</div>
 </template>

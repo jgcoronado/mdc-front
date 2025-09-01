@@ -5,7 +5,7 @@ import DbCount from './components/molecules/DbCount.vue';
 <template>
   <header>
   </header>
-  <nav class="grid justify-items-center">
+  <nav class="grid justify-items-center py-5">
     <img class="h-10" alt="My Image" src="../src/assets/banner_mdc.png" />
     <ul class="menu menu-horizontal rounded-box">
       <li><RouterLink to="/">Home</RouterLink></li>
@@ -16,12 +16,12 @@ import DbCount from './components/molecules/DbCount.vue';
       <li><RouterLink to="/estadisticas">Estadisticas</RouterLink></li>
     </ul>  
   </nav>
-  <body class="grid justify-items-center pb-10">    
+  <body class="grid justify-items-center">    
     <div>
       <RouterView />
     </div>
   </body>
-  <footer class="grid justify-items-center pb-10">
+  <footer class="grid justify-items-center py-5">
     <DbCount />
   </footer>
 </template>

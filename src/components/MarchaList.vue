@@ -17,8 +17,10 @@ onMounted( async () => {
 </script>
 
 <template>
-  <div class="divider"> Se han encontrado {{ apiData.rowsReturned }} marchas:</div>
-  <div class="tableList">
+  <div v-if="apiData.rowsReturned < 1" class="divider py-10 my-0"> Lo sentimos, no se ha encontrado ninguna marcha.</div>
+  <div v-else-if="apiData.rowsReturned == 1" class="divider py-10 my-0"> Se ha encontrado una marcha:</div>
+  <div v-else class="divider py-10 my-0"> Se han encontrado {{ apiData.rowsReturned }} marchas:</div>
+  <div v-if="apiData.rowsReturned > 0" class="tableList">
     <table class="table table-zebra">
       <thead>
         <tr>
