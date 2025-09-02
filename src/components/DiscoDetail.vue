@@ -13,7 +13,7 @@ onMounted(async () => {
 });
 
 function getCover(ID_DISCO) {
-  return `../../src/assets/cover/${ID_DISCO}.png`;
+  return `../../assets/cover/${ID_DISCO}.png`;
 }
 function getAlt(NOMBRE_CD) {
   return `Portada del disco '${NOMBRE_CD}'`;
