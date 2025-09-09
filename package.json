@@ -10,7 +10,12 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "compose:local": "docker-compose -f docker-compose-local.yml up -d",
+    "compose:local:build": "docker-compose -f docker-compose-local.yml up --build --force-recreate -d",
+    "compose:local:stop": "docker-compose -f docker-compose-local.yml stop",
+    "compose:local:down": "docker-compose -f docker-compose-local.yml down"
+
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.12",

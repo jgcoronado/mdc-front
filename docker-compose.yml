@@ -1,0 +1,12 @@
+services:
+  app:
+    container_name: mdc-front
+    build: .
+    ports:
+    - "8080:8080"
+    environment:
+      NODE_ENV: production
+    env_file: .env
+    network_mode: host
+    restart: unless-stopped
+  
