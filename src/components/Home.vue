@@ -1,24 +1,9 @@
 <script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-
-const text = ref('');
-
-function goToMarchaList(text) {
-  router.push({
-    name: 'marchaList',
-    params: {
-      name: text,
-    },
-  });
-};
 </script>
 
 <template>
   <div class="mockup-window border border-base-300 w-full">
-    <div class="grid place-content-center border-t border-base-300 h-80 text-xl md:min-w-xl md:max-w-3xl m-5 p-5">
+    <div class="grid place-content-center border-t border-base-300 h-80 sm:max-w-sm md:min-w-xl md:max-w-3xl m-5 p-5">
       <div>
         <p class="text-center">
           ¡Bienvenido a Marchas de Cristo!

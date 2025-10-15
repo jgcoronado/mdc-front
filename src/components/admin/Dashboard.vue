@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
+import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router';
 import { logout } from '../../services/authService';
 
@@ -10,6 +11,19 @@ const user = ref('');
 
 onMounted(() => {
   user.value = route.params.name;
+
+  // let token=localStorage.getItem("token");
+  // console.log(token);
+  // axios
+  //   .get("http://localhost:3000/auth/user", {
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //       token: token
+  //     }
+  //   })
+  //   .then(res => {
+  //     console.log(res);
+  //   });
 });
 
 function goToLogout() {
@@ -25,7 +39,7 @@ function goToLogout() {
       class="btn"
       @click="goToLogout()"
     >
-    Logout
+      Logout
     </button>
 </template>
 

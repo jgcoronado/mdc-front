@@ -27,14 +27,14 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to, from, next) => {
-  const loggedIn = !!localStorage.getItem('user');
-  console.log("🚀 ~ loggedIn:", loggedIn)
-  if (to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
-    next('/login');
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   const loggedIn = !! .getItem('user');
+//   console.log("🚀 ~ loggedIn:", loggedIn)
+//   if (to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
+//     next('/login');
+//   } else {
+//     next();
+//   }
+// });
 
 export { router };

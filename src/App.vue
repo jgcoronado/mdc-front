@@ -1,5 +1,15 @@
 <script setup>
+import { ref, onMounted } from 'vue';
 import DbCount from './components/molecules/DbCount.vue';
+import { postLogin } from './services/getData';
+
+const apiData = ref('');
+
+onMounted (async () => {
+  // const BASIC_USER = import.meta.env.BASIC_USER;
+  // const BASIC_PASS = import.meta.env.BASIC_PASS;
+  // apiData.value = await postLogin(BASIC_USER, BASIC_PASS);
+});
 </script>
 
 <template>

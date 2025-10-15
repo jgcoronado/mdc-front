@@ -17,3 +17,9 @@ export async function getListData(page,route) {
   const res = await axios.get(apiUrl);
   return res.data;
 };
+
+export async function postLogin(username, password) {
+  const apiUrl = `${BASE_URL}/login`;
+  const res = await axios.post(apiUrl, { username, password });
+  return res.data;
+};

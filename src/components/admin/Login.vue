@@ -26,18 +26,34 @@ async function handleLogin() {
 };
 </script>
 <template>
-  <div>
-    <h1>Iniciar sesión</h1>
+  <fieldset
+    class="fieldset bg-base-200 border-base-300 rounded-box w-ms border p-4 md:min-w-xl place-items-center"
+  >
     <form @submit.prevent="handleLogin">
-      <div>
-        <label for="username">Usuario</label>
-        <input type="text" v-model="form.username" required />
-      </div>
-      <div>
-        <label for="password">Contraseña</label>
-        <input type="password" v-model="form.password" required />
-      </div>
-      <button type="submit">Entrar</button>
+      <label class="label">Usuario</label>
+      <input
+      required
+        class="input w-full text-base"
+        type="text"
+        v-model="form.username"
+        placeholder="Usuario"
+      />
+      <label class="label">Contraseña</label>
+      <input
+        required
+        class="input w-full text-base"
+        type="password"
+        v-model="form.password"
+        placeholder="Contraseña"
+      />
+      <button
+        class="btn btn-neutral mt-4"
+        type="submit"
+        @keyup.enter="handleLogin"
+        @click="handleLogin"
+      >
+        Entrar
+      </button>
     </form>
-  </div>
+  </fieldset>
 </template>
