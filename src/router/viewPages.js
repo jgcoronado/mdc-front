@@ -16,8 +16,8 @@ import Stats from '@/components/Stats.vue';
 const router = [
   { path: '/', name: 'home', component: Home },
   { path: '/marcha', name: 'marchaSearch', component: MarchaSearch },
-  { path: '/marcha/:id', name: 'marchaDetail', component: MarchaDetail },
-  { path: '/marcha/search/:query', name: 'marchaList', component: MarchaList },
+  { path: '/api/marcha/:id', name: 'marchaDetail', component: MarchaDetail },
+  { path: '/api/marcha/search/:query', name: 'marchaList', component: MarchaList },
   { path: '/autor', name: 'autorSearch', component: AutorSearch },
   { path: '/autor/:id', name: 'autorDetail', component: AutorDetail },
   { path: '/autor/search/:query', name: 'autorList', component: AutorList },
