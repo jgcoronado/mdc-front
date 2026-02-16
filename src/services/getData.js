@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+const BASE_URL = (import.meta.env.VITE_BASE_URL || '/api').replace(/\/$/, '');
 
 export async function getDetailData(page,route) {
   const { id } = route.params;
